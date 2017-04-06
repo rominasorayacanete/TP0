@@ -1,4 +1,4 @@
-package MVVM;
+package view;
 import java.awt.Color;
 
 import org.uqbar.arena.layout.VerticalLayout;

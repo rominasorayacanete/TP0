@@ -1,4 +1,4 @@
-package MVVM;
+package domain;
 
 public class LectorModel {
 

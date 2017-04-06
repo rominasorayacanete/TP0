@@ -1,4 +1,6 @@
-package MVVM;
+package view;
+
+import domain.LectorModel;
 
 public class LectorViewModel {
 	private String tokenUsuario;
