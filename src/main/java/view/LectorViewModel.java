@@ -1,7 +1,10 @@
 package view;
 
+import org.uqbar.commons.utils.Observable;
+
 import domain.LectorModel;
 
+@Observable
 public class LectorViewModel {
 	private String tokenUsuario;
 	private double notas;
