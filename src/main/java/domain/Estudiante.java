@@ -5,6 +5,10 @@ public class Estudiante {
 	private String first_name;
 	private String last_name;
 	private String github_user;
+
+	public boolean pudoInicializarse(){
+		return code != null;
+	}
 	
 	public String getCode() {
 		return code;
@@ -32,3 +36,6 @@ public class Estudiante {
 	}
 	
 }
+
+
+
