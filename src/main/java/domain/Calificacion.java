@@ -8,7 +8,6 @@ public class Calificacion {
     private String value;
     private Date createdAt;
     private Date updatedAt;
-
     
 
     public Calificacion(Integer id, String value, Date createdAt, Date updatedAt) {
