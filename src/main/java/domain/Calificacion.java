@@ -6,15 +6,15 @@ public class Calificacion {
 
     private Integer id;
     private String value;
-    private Date createdAt;
-    private Date updatedAt;
+    private Date created_at;
+    private Date updated_at;
     
 
     public Calificacion(Integer id, String value, Date createdAt, Date updatedAt) {
         this.id = id;
         this.value = value;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+        this.created_at = createdAt;
+        this.updated_at = updatedAt;
     }
 
     public Integer getId() {
@@ -33,20 +33,20 @@ public class Calificacion {
         this.value = value;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
+    public Date getCreated_at() {
+        return created_at;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+    public void setCreated_at(Date createdAt) {
+        this.created_at = createdAt;
     }
 
-    public Date getUpdatedAt() {
-        return updatedAt;
+    public Date getUpdated_at() {
+        return updated_at;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setUpdated_at(Date updatedAt) {
+        this.updated_at = updatedAt;
     }
 
 }

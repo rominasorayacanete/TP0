@@ -3,14 +3,14 @@ package domain;
 
 import java.util.List;
 
-public class Nota {
+public class HistorialAcademico {
 
     private List<Materia> assignments;
 
-    public Nota() {
+    public HistorialAcademico() {
     }
 
-    public Nota(List<Materia> assignments) {
+    public HistorialAcademico(List<Materia> assignments) {
         this.assignments = assignments;
     }
 

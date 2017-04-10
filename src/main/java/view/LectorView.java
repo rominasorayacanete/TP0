@@ -5,7 +5,9 @@ import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.TextBox;
+import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.MainWindow;
+
 
 /**
  * Token de prueba: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIxMTEyMjIzMzMiLCJybmQiOiJ5SXNmZFIwN2lIR3BRRmVjYU9KT2VRPT0ifQ.9pVJGUXhrJPQ-TptNCt971l0h_1dWqWgMrHAWXJchho
@@ -30,17 +32,31 @@ public class LectorView extends MainWindow<LectorViewModel> {
 		    
 		    new Button(mainPanel) //
 		    .setCaption("Confirmar Token de ingreso") //
-		    .onClick(() -> getModelObject().validarToken());
-
-		    new Label(mainPanel).bindValueToProperty("validacionToken");
+		    .onClick(() -> this.validarYObtenerDatos());
 		    
-		    new Button(mainPanel) //
-		    .setCaption("Consultar notas") //
-		    .onClick(() -> getModelObject().obtenerDatos());
+		    // new Label(mainPanel).bindValueToProperty("validacionToken"); TE DICE LO DE LA MATRIX
 		    
-		    new Label(mainPanel).bindValueToProperty("notas"); 
 		   
 		  }
+			//protected void createFormPanel(Panel formPanel) {
+				//this.setTitle("Request");
+				
+			
+			//}
+			public void validarYObtenerDatos(){
+			    getModelObject().validarToken();
+			    this.obtenerDatos();
+			}
+			
+
+			public void obtenerDatos(){
+				Dialog<?> dialog = new DatosView(this);
+				dialog.open();
+				//openDialog(new EditarCelularWindow(this, this.getModelObject().getCelularSeleccionado()));
+				dialog.onAccept(() -> getModelObject());
+				
+			}
+			
 
 		  public static void main(String[] args) {
 			new LectorView().startApplication();

@@ -7,7 +7,7 @@ public class Materia {
     private Integer id;
     private String title;
     private String description;
-    private List<Calificacion> grado;
+    private List<Calificacion> grades;
 
     public Materia() {
     }
@@ -16,7 +16,7 @@ public class Materia {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.grado = grado;
+        this.grades = grado;
     }
 
     public Integer getId() {
@@ -44,11 +44,11 @@ public class Materia {
     }
 
     public List<Calificacion> getGrado() {
-        return grado;
+        return grades;
     }
 
     public void setGrades(List<Calificacion> grado) {
-        this.grado = grado;
+        this.grades = grado;
     }
 
 }
