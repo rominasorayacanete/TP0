@@ -9,6 +9,7 @@ import org.uqbar.arena.windows.MainWindow;
 
 import com.google.gson.Gson;
 
+import domain.Calificacion;
 import domain.HistorialAcademico;
 
 /**
@@ -46,11 +47,11 @@ public class LectorView extends MainWindow<LectorViewModel> {
 	  }
 
 	  public static void main(String[] args) {
-		  //new LectorView().startApplication();
-		  String s = "hola";//"{\"assignments\": [{\"id\": 1,\"title\": \"Primer Parcial\",\"description\": null,\"grades\": [{\"id\": 1,\"value\": 2,\"created_at\": \"2017-03-25T13:56:07.526Z\", \"updated_at\": \"2017-03-25T13:56:07.526Z\"},{\"id\": 2,\"value\": 7,\"created_at\": \"2017-03-25T13:56:07.595Z\",\"updated_at\": \"2017-03-25T13:56:07.595Z\"}]},{\"id\": 3,\"title\": \"TPA1\",\"description\": \"Primera Entrega del TP Anual\",\"grades\": [{\"id\": 4,\"value\": \"B+\",\"created_at\": \"2017-03-25T13:56:07.649Z\",\"updated_at\": \"2017-03-25T13:56:07.649Z\"}]}]}";
-		  HistorialAcademico h = new Gson().fromJson(s, HistorialAcademico.class);
+		  Gson gson = new Gson();
+		  Calificacion calif1 = new Calificacion(4, "B+", null, null);
+		  Calificacion calif2 = new Calificacion(4, "2", null, null);
 		  
-		  System.out.println(h.getAssignments().get(0).getGrades().get(0).getValue());
+		  String jsonInString = gson.toJson(calif1);
 		  
 	  }
 	  
