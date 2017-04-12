@@ -1,5 +1,7 @@
+
 package domain;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class Materia {
@@ -11,11 +13,11 @@ public class Materia {
 
     public Materia() {
     }
-
-    public int ultimaNota() {
-	return grades.stream().max(c -> c).get().getValue();
-}
-
+    
+    public Integer ultimaNota() {
+		return grades.stream().max(Comparator.comparing(c -> c.getValue())).get().getValue();
+    }
+    
     public Materia(Integer id, String title, String description, List<Calificacion> grado) {
         this.id = id;
         this.title = title;
@@ -47,7 +49,7 @@ public class Materia {
         this.description = description;
     }
 
-    public List<Calificacion> getGrado() {
+    public List<Calificacion> getGrades() {
         return grades;
     }
 
@@ -55,5 +57,16 @@ public class Materia {
         this.grades = grado;
     }
 
+	/*public int ultimaNota() {
+		// TODO Auto-generated method stub
+		return 0;
+	}*/
+
+	public boolean aproboUltima() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
 }
+
 

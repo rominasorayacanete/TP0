@@ -8,7 +8,7 @@ public class Estudiante {
 
 	public boolean pudoInicializarse(){
 		return code != null;
-}
+	}
 	
 	public String getCode() {
 		return code;
