@@ -1,12 +1,17 @@
 package view;
 import java.awt.Color;
 
+
 import org.uqbar.arena.layout.VerticalLayout;
 import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.TextBox;
 import org.uqbar.arena.windows.MainWindow;
+
+
+
+import domain.Estudiante;
 
 public class LectorView extends MainWindow<LectorViewModel> {
 
@@ -25,17 +30,21 @@ public class LectorView extends MainWindow<LectorViewModel> {
 		    
 		    new Button(mainPanel) //
 		    .setCaption("Confirmar Token de ingreso") //
-		    .onClick(() -> getModelObject().validar());
-		    
+		    .onClick(() -> getModelObject().validarToken());
+
+		    new Label(mainPanel).bindValueToProperty("validacionToken");
+			
+		///// + la parte de MODIFICAR DATOS ////
+
 		    new Button(mainPanel) //
 		    .setCaption("Consultar notas") //
-		    .onClick(() -> getModelObject().obtenerDatos());
-		    
-		    new Label(mainPanel).bindValueToProperty("notas"); 
-		   
+		    .onClick(() -> getModelObject().obtenerHistorial());
+
+				   
 		  }
 
 		  public static void main(String[] args) {
-		    new LectorView().startApplication();
+		   new LectorView().startApplication();
 		  }
 }
+
