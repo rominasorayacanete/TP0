@@ -5,11 +5,13 @@ import java.time.LocalDate;
 public class Calificacion {
 
     private Integer id;
-    private Integer value;
+    private Nota value;
     private LocalDate created_at;
     private LocalDate updated_at;
 
-    public Calificacion(Integer id, Integer value, LocalDate createdAt, LocalDate updatedAt) {
+
+    public Calificacion(Integer id, Nota value, LocalDate createdAt, LocalDate updatedAt) {
+
         this.id = id;
         this.value = value;
         this.created_at = createdAt;
@@ -24,11 +26,11 @@ public class Calificacion {
 		this.id = id;
 	}
 
-	public Integer getValue() {
+	public Nota getValue() {
 		return value;
 	}
 
-	public void setValue(Integer value) {
+	public void setValue(Nota value) {
 		this.value = value;
 	}
 
@@ -40,6 +42,7 @@ public class Calificacion {
 		this.created_at = created_at;
 	}
 
+
 	public LocalDate getUpdated_at() {
 		return updated_at;
 	}
@@ -47,7 +50,8 @@ public class Calificacion {
 	public void setUpdated_at(LocalDate updated_at) {
 		this.updated_at = updated_at;
 	}
-    
+
+  
 }
 
 

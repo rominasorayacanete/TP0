@@ -1,9 +1,10 @@
+
 package domain;
 
 public class Fila {
 	
 	private int idMateria;
-	private int ultimaNota;
+	private Nota ultimaNota;
 	private boolean aprobado;
 	private String titulo;
 	
@@ -13,10 +14,10 @@ public class Fila {
 	public void setIdMateria(int idMateria) {
 		this.idMateria = idMateria;
 	}
-	public int getUltimaNota() {
+	public Nota getUltimaNota() {
 		return ultimaNota;
 	}
-	public void setUltimaNota(int ultimaNota) {
+	public void setUltimaNota(Nota ultimaNota) {
 		this.ultimaNota = ultimaNota;
 	}
 	
