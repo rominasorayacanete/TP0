@@ -7,6 +7,8 @@ import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.WindowOwner;
 
+@SuppressWarnings("unused")
+
 public class DatosView extends Dialog<DatosViewModel>  {
 	public DatosView(WindowOwner owner){
 		super(owner, new DatosViewModel());

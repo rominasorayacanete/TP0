@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package domain;
 
 public class Fila {
@@ -34,3 +35,15 @@ public class Fila {
 	}
 
 }
+=======
+package domain;
+
+class Fila  {
+	private int idMateria;
+	private int ultimaNota;
+	private boolean aprobado;
+	private String titulo;
+
+	//+setters y getters 
+}
+>>>>>>> ba666c310b6cf0af639aa40f36523b29bf96acc8

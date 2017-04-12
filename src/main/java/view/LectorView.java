@@ -1,4 +1,6 @@
 package view;
+import java.awt.Color;
+
 
 import org.uqbar.arena.layout.VerticalLayout;
 import org.uqbar.arena.widgets.Button;

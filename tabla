@@ -1,0 +1,15 @@
+Table<Fila> table = new Table<Fila>(mainPanel, Fila.class);
+table.setNumberVisibleRows(10);
+table.setWidth(450);
+
+table.bindItemsToProperty("filas");
+
+new Column<Fila>(table) //
+.setTitle("Id")
+.setFixedSize(150)
+.bindContentsToProperty("");
+
+new Column<HistorialAcademico>(table) //
+.setTitle("Número")
+.setFixedSize(100)
+.bindContentsToProperty("numero");

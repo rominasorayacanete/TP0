@@ -1,5 +1,7 @@
 package view;
 
+import java.awt.List;
+
 import org.uqbar.commons.utils.Observable;
 
 import domain.LectorModel;
@@ -8,21 +10,24 @@ import domain.LectorModel;
 public class LectorViewModel {
 	private String tokenUsuario;
 	private double notas;
-	private LectorModel modelo = new LectorModel();
+	private static LectorModel modelo = new LectorModel();
 	private String validacionToken;
-	
+	List<Fila> filas;
+
+// EXCEPCION
 	public void validarToken() {
-		
 		modelo.obtenerDatos(tokenUsuario);
-		
-		if( modelo.pudoObtenerDatos() ) validacionToken = "You have entered the matrix"; 
-		else validacionToken = "You are not ready to see the truth";
-		
+		if( modelo.pudoObtenerDatos() ) validacionToken = "You have entered the matrix";
+		else {
+			validacionToken = "You are not ready to see the truth";
+		}
+	}
+// EXCEPCION
+	
+	public void obtenerHistorial() {
+		filas = modelo.obtenerFilas(tokenUsuario);
 	}
 	
-	/** Cambiar nombre: este método representa a cuando el usuario aprieta el botón
-	 * de consultar notas, y se confunde con el obtenerDatos() del LectorModel 
-	 */
 	public void obtenerDatos() {
 		//TODO
 	}
@@ -43,12 +48,12 @@ public class LectorViewModel {
 		this.notas = notas;
 	}
 
-	public LectorModel getModelo() {
+	public static LectorModel getModelo() {
 		return modelo;
 	}
 
-	public void setModelo(LectorModel modelo) {
-		this.modelo = modelo;
+	public static void setModelo(LectorModel modelo) {
+		LectorViewModel.modelo = modelo;
 	}
 
 	public String getValidacionToken() {
@@ -58,6 +63,8 @@ public class LectorViewModel {
 	public void setValidacionToken(String validacionToken) {
 		this.validacionToken = validacionToken;
 	}
+
+	
 	
 }
 

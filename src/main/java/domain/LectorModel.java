@@ -3,12 +3,12 @@ package domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import javax.ws.rs.core.MediaType;
 
 import com.google.gson.Gson;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
+
 
 public class LectorModel {
 	private Estudiante estudiante;
@@ -59,4 +59,7 @@ public class LectorModel {
 				
 	}
 	
-}
+
+
+	}
+
