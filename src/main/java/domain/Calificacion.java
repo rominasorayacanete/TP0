@@ -51,7 +51,6 @@ public class Calificacion {
 		this.updated_at = updated_at;
 	}
 
-  
 }
 
 

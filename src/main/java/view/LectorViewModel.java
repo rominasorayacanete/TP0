@@ -14,19 +14,20 @@ public class LectorViewModel {
 	private LectorModel modelo = new LectorModel();
 	private String validacionToken;
 	private List<Fila> filas;
+
 	
 	public void validarToken() {
-		// MANEJAR EXCEPTION
-		modelo.obtenerDatos(tokenUsuario);
-		
-		if( modelo.pudoObtenerDatos() ) validacionToken = "You have entered the matrix"; 
-		else validacionToken = "You are not ready to see the truth";
+			modelo.obtenerDatos(tokenUsuario);
 		
 	}
-	
+
 	public void obtenerHistorial() {
 			filas = modelo.obtenerFilas(tokenUsuario);
+
 	}
+	
+	
+
 	public String getTokenUsuario() {
 		return tokenUsuario;
 	}
@@ -68,8 +69,4 @@ public class LectorViewModel {
 	}
 	
 	
-	
 }
-
-
-

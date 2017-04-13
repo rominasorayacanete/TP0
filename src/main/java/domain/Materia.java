@@ -16,9 +16,12 @@ public class Materia {
     
     public Nota ultimaNota() {
 
-		if( grades.isEmpty() ) throw new RuntimeException("");
+    	
+		//return grades.stream().max(Comparator.comparing(c -> c.getUpdated_at())).get().getValue();
+    	if( grades.isEmpty() ) throw new NoTieneNotasException("No Tenes Notas!");
 
-		return grades.stream().max(Comparator.comparing(c -> c.getUpdated_at())).get().getValue();	
+    	return grades.stream().max(Comparator.comparing(c -> c.getUpdated_at())).get().getValue();		
+
     }
     
     public Materia(Integer id, String title, String description, List<Calificacion> grado) {
@@ -60,15 +63,11 @@ public class Materia {
         this.grades = grado;
     }
 
-	/*public int ultimaNota() {
-		// TODO Auto-generated method stub
-		return 0;
-	}*/
+
 
     public boolean aproboUltima() {
 		return this.ultimaNota().esNotaAprobada();
 	}
 
 }
-
 
