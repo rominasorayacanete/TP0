@@ -47,6 +47,23 @@ public class LectorModel {
 		if( !pudoObtenerDatos() ) throw new TokenInvalidoException("Token Invalido, ingreselo nuevamente");
 	}
 
+	public void actualizarDatos(String token, String nuevoNombre, String nuevoApellido, String nuevoGitUser){
+		
+		Gson gson = new Gson();
+		
+		estudiante.setFirst_name(nuevoNombre);
+		estudiante.setLast_name(nuevoApellido);
+		estudiante.setGithub_user(nuevoGitUser);
+		
+		String jsonInString = gson.toJson(estudiante);
+
+		Client.create()
+		         .resource("http://notitas.herokuapp.com")
+		         .path("student")
+		         .header("Authorization", "Bearer " + token )
+		         .accept(MediaType.APPLICATION_JSON).put(jsonInString);
+}
+
 
 
 	public boolean pudoObtenerDatos() {

@@ -7,12 +7,10 @@ import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.TextBox;
 import org.uqbar.arena.widgets.tables.Column;
 import org.uqbar.arena.widgets.tables.Table;
-import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.SimpleWindow;
 import org.uqbar.arena.windows.WindowOwner;
 
 import domain.Fila;
-import domain.ValidacionDialog;
 
 /**
  * Token de prueba: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIxMTEyMjIzMzMiLCJybmQiOiJ5SXNmZFIwN2lIR3BRRmVjYU9KT2VRPT0ifQ.9pVJGUXhrJPQ-TptNCt971l0h_1dWqWgMrHAWXJchho
@@ -25,64 +23,72 @@ public class LectorView extends SimpleWindow<LectorViewModel> {
 		super(parent, new LectorViewModel());
 	}
 
-
 	@Override
 		protected void addActions(Panel panelActions) {
 			new Button(panelActions) //
 		    .setCaption("Confirmar Token de ingreso") //
-		    .onClick(() -> {getModelObject().validarToken();  ; });
+		    .onClick(() -> getModelObject().validarToken());
 			
 			new Button(panelActions) //
 		    .setCaption("Consultar asignaciones") //
-		    .onClick(() -> { getModelObject().validarToken(); this.generarDialogo(); });
+		    .onClick(() -> {getModelObject().validarToken();getModelObject().obtenerHistorial();}); // cuando hagamos mas ventanitas sacar esta segunda validacion, porque si el token no funca ni pasa a la otra ventana.... 
+		
+			 new Button(panelActions) //
+			    .setCaption("Actualizar Datos") //
+			    .onClick(() -> {getModelObject().validarToken(); getModelObject().actualizarDatos(); });
+
 		}
 
 
 	  @Override
 	  public void createFormPanel(Panel mainPanel) {
-	    setTitle("Lector de Notas");
-	    mainPanel.setLayout(new VerticalLayout());
 	    
-	    new Label(mainPanel).setText("Ingrese su token");
-	    
-	    new TextBox(mainPanel).bindValueToProperty("tokenUsuario");
-	    
-	   	    new Label(mainPanel).bindValueToProperty("validacionToken");
-
-		// ++ PARTE DE MODIFICAR DATOS 
-
-	    
-
-		Table<Fila> table = new Table<Fila>(mainPanel, Fila.class);
-		table.setNumberVisibleRows(10);
-
-		table.bindItemsToProperty("filas");
-
-		new Column<Fila>(table) //
-			.setTitle("Titulo")
-			.setFixedSize(150)
-			.bindContentsToProperty("titulo");
-		
-		new Column<Fila>(table) //
-			.setTitle("Nota actual")
-			.setFixedSize(150)
-			.bindContentsToProperty("ultimaNota");
-
-		new Column<Fila>(table) //
-			.setTitle("Aprobado")
-			.setFixedSize(100)
-			.bindContentsToProperty("aprobado");
+		  setTitle("Lector de Notas");
+		    mainPanel.setLayout(new VerticalLayout());
+		    
+		    new Label(mainPanel).setText("Ingrese su token");
+		    
+		    new TextBox(mainPanel).bindValueToProperty("tokenUsuario");
+		    
 
 
-	    
-	  }
+			new Label(mainPanel).setText("Nuevo nombre: ");
 
-	  private void generarDialogo() {
-		  Dialog<?> dialogValidacion = new ValidacionDialog(this);
-		  dialogValidacion.open();
-		  dialogValidacion.onAccept(()->{});
-	  }
-	
-	  	  
-}	 
+			new TextBox(mainPanel).bindValueToProperty("nuevoNombre");
+
+			new Label(mainPanel).setText("Nuevo apellido:" );
+			
+			new TextBox(mainPanel).bindValueToProperty("nuevoApellido");
+
+			new Label(mainPanel).setText("Nuevo usuario de Github: ");
+
+			new TextBox(mainPanel).bindValueToProperty("nuevoGitUser");
+
+			
+			
+			Table<Fila> table = new Table<Fila>(mainPanel, Fila.class);
+			table.setNumberVisibleRows(10);
+			
+			table.bindItemsToProperty("filas");
+			
+			new Column<Fila>(table) //
+				.setTitle("Titulo")
+				.setFixedSize(150)
+				.bindContentsToProperty("titulo");
+			
+			new Column<Fila>(table) //
+				.setTitle("Nota actual")
+				.setFixedSize(150)
+				.bindContentsToProperty("ultimaNota");
+			
+			new Column<Fila>(table) //
+				.setTitle("Aprobado")
+				.setFixedSize(100)
+				.bindContentsToProperty("aprobado");
+		    
+		  }
+
+
+  }  
+	 
 
