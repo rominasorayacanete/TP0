@@ -9,8 +9,8 @@ import com.google.gson.Gson;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 
-
 public class LectorModel {
+	
 	private Estudiante estudiante;
 	private HistorialAcademico historial;
 	
@@ -22,21 +22,23 @@ public class LectorModel {
 		filas = historial.getAssignments().stream().map(this::toFila).collect(Collectors.toList());
 		
 		return filas;
+		
 	}
 	
 	private Fila toFila(Materia materia) {
+		
 		Fila fila = new Fila();
-		fila.setIdMateria(materia.getId());
 		fila.setTitulo(materia.getTitle());
 		fila.setUltimaNota(materia.ultimaNota());
 		fila.setAprobado(materia.aproboUltima());
 		
 		return fila;
+		
 	}
 
-	
 	public void obtenerHistorial(String token) {
 		historial = new Gson().fromJson(this.obtenerRecurso(token, "/assignments"), HistorialAcademico.class);
+	
 	}
 
 	public void obtenerDatos(String token) { 
@@ -48,6 +50,7 @@ public class LectorModel {
 	}
 			
 	private String obtenerRecurso(String token, String recurso) {
+		
 		ClientResponse response = Client.create()
 		         .resource("http://notitas.herokuapp.com")
 		         .path("student" + recurso)
@@ -59,7 +62,5 @@ public class LectorModel {
 				
 	}
 	
-
-
-	}
+}
 

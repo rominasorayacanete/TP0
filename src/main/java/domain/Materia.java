@@ -13,8 +13,13 @@ public class Materia {
     public Materia() {
     }
     
-    public String ultimaNota() {
-		return grades.stream().max(Comparator.comparing(c -> c.getValue())).get().getValue();
+    public Nota ultimaNota() {
+    	
+		//return grades.stream().max(Comparator.comparing(c -> c.getUpdated_at())).get().getValue();
+    	if( grades.isEmpty() ) throw new RuntimeException("sarlinga");
+
+    	return grades.stream().max(Comparator.comparing(c -> c.getUpdated_at())).get().getValue();		
+
     }
     
     public Materia(Integer id, String title, String description, List<Calificacion> grado) {
@@ -56,15 +61,8 @@ public class Materia {
         this.grades = grado;
     }
 
-	/*public int ultimaNota() {
-		// TODO Auto-generated method stub
-		return 0;
-	}*/
-
-	public boolean aproboUltima() {
-		// TODO Auto-generated method stub
-		return true;
+    public boolean aproboUltima() {
+		return this.ultimaNota().esNotaAprobada();
 	}
 
 }
-

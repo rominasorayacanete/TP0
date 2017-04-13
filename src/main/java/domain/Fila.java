@@ -1,49 +1,36 @@
-<<<<<<< HEAD
 package domain;
 
+import org.uqbar.commons.utils.Observable;
+
+@Observable
 public class Fila {
 	
-	private int idMateria;
-	private String ultimaNota;
+	private Nota ultimaNota;
 	private boolean aprobado;
 	private String titulo;
 	
-	public int getIdMateria() {
-		return idMateria;
-	}
-	public void setIdMateria(int idMateria) {
-		this.idMateria = idMateria;
-	}
-	public String getUltimaNota() {
+	public Nota getUltimaNota() {
 		return ultimaNota;
 	}
-	public void setUltimaNota(String ultimaNota) {
-		this.ultimaNota = ultimaNota;
+	
+	public void setUltimaNota(Nota nota) {
+		this.ultimaNota = nota;
 	}
 	
 	public String getTitulo() {
 		return titulo;
 	}
+	
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
+	
 	public boolean isAprobado() {
 		return aprobado;
 	}
+	
 	public void setAprobado(boolean aprobado) {
 		this.aprobado = aprobado;
 	}
 
 }
-=======
-package domain;
-
-class Fila  {
-	private int idMateria;
-	private int ultimaNota;
-	private boolean aprobado;
-	private String titulo;
-
-	//+setters y getters 
-}
->>>>>>> ba666c310b6cf0af639aa40f36523b29bf96acc8
