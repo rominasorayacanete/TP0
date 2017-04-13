@@ -7,4 +7,8 @@ public class NotaNumerica implements Nota {
 		return value > 6;
 	}
 	
+	public void setValue(Integer _v){
+		value = _v;
+	}
+	
 }

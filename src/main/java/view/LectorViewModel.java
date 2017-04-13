@@ -1,7 +1,10 @@
 package view;
 
+import java.util.List;
+
 import org.uqbar.commons.utils.Observable;
 
+import domain.Fila;
 import domain.LectorModel;
 
 @Observable
@@ -10,9 +13,10 @@ public class LectorViewModel {
 	private double notas;
 	private LectorModel modelo = new LectorModel();
 	private String validacionToken;
+	private List<Fila> filas;
 	
 	public void validarToken() {
-		
+		// MANEJAR EXCEPTION
 		modelo.obtenerDatos(tokenUsuario);
 		
 		if( modelo.pudoObtenerDatos() ) validacionToken = "You have entered the matrix"; 
@@ -20,13 +24,9 @@ public class LectorViewModel {
 		
 	}
 	
-	/** Cambiar nombre: este método representa a cuando el usuario aprieta el botón
-	 * de consultar notas, y se confunde con el obtenerDatos() del LectorModel 
-	 */
-	public void obtenerDatos() {
-		//TODO
+	public void obtenerHistorial() {
+			filas = modelo.obtenerFilas(tokenUsuario);
 	}
-
 	public String getTokenUsuario() {
 		return tokenUsuario;
 	}
@@ -58,6 +58,16 @@ public class LectorViewModel {
 	public void setValidacionToken(String validacionToken) {
 		this.validacionToken = validacionToken;
 	}
+
+	public List<Fila> getFilas() {
+		return filas;
+	}
+
+	public void setFilas(List<Fila> filas) {
+		this.filas = filas;
+	}
+	
+	
 	
 }
 

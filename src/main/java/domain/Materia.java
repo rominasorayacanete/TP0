@@ -15,7 +15,10 @@ public class Materia {
     }
     
     public Nota ultimaNota() {
-		return grades.stream().max(Comparator.comparing(c -> c.getUpdated_at())).get().getValue();
+
+		if( grades.isEmpty() ) throw new RuntimeException("");
+
+		return grades.stream().max(Comparator.comparing(c -> c.getUpdated_at())).get().getValue();	
     }
     
     public Materia(Integer id, String title, String description, List<Calificacion> grado) {

@@ -26,7 +26,6 @@ public class LectorModel {
 	
 	private Fila toFila(Materia materia) {
 		Fila fila = new Fila();
-		fila.setIdMateria(materia.getId());
 		fila.setTitulo(materia.getTitle());
 		fila.setUltimaNota(materia.ultimaNota());
 		fila.setAprobado(materia.aproboUltima());
@@ -59,12 +58,8 @@ public class LectorModel {
 				
 	}
 	
-
 }
 
-
-
-	
 
 
 

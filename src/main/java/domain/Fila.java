@@ -1,19 +1,15 @@
 
 package domain;
 
+import org.uqbar.commons.utils.Observable;
+
+@Observable
 public class Fila {
 	
-	private int idMateria;
 	private Nota ultimaNota;
 	private boolean aprobado;
 	private String titulo;
 	
-	public int getIdMateria() {
-		return idMateria;
-	}
-	public void setIdMateria(int idMateria) {
-		this.idMateria = idMateria;
-	}
 	public Nota getUltimaNota() {
 		return ultimaNota;
 	}
