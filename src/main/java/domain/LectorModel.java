@@ -14,10 +14,11 @@ public class LectorModel {
 	
 	private Estudiante estudiante;
 	private HistorialAcademico historial;
+	private String token;
 	
-	public List<Fila> obtenerFilas(String tokenUsuario){
+	public List<Fila> obtenerFilas(){
 	
-		this.obtenerHistorial(tokenUsuario);
+		this.obtenerHistorial();
 		List<Fila> filas = new ArrayList<Fila>();
 		
 		filas = historial.getAssignments().stream().map(this::toFila).collect(Collectors.toList());
@@ -32,22 +33,22 @@ public class LectorModel {
 		fila.setUltimaNota(materia.ultimaNota());
 		fila.setAprobado(materia.aproboUltima());
 		
-		
 		return fila;
 	}
 
 
-	public void obtenerHistorial(String token) {
+	public void obtenerHistorial() {
 		historial = new Gson().fromJson(this.obtenerRecurso(token, "/assignments"), HistorialAcademico.class);
 	
 	}
 
-	public void obtenerDatos(String token) { 
-		estudiante = new Gson().fromJson(this.obtenerRecurso(token, ""), Estudiante.class);
+	public void obtenerDatos(String tokenUsuario) { 
+		estudiante = new Gson().fromJson(this.obtenerRecurso(tokenUsuario, ""), Estudiante.class);
 		if( !pudoObtenerDatos() ) throw new TokenInvalidoException("Token Invalido, ingreselo nuevamente");
+		token = tokenUsuario;
 	}
 
-	public void actualizarDatos(String token, String nuevoNombre, String nuevoApellido, String nuevoGitUser){
+	public void actualizarDatos(String nuevoNombre, String nuevoApellido, String nuevoGitUser){
 		
 		Gson gson = new Gson();
 		
@@ -70,12 +71,12 @@ public class LectorModel {
 		return estudiante.pudoInicializarse();
 	}
 			
-	private String obtenerRecurso(String token, String recurso) {
+	private String obtenerRecurso(String tokenUsuario, String recurso) {
 		
 		ClientResponse response = Client.create()
 		         .resource("http://notitas.herokuapp.com")
 		         .path("student" + recurso)
-		         .header("Authorization", "Bearer " + token)
+		         .header("Authorization", "Bearer " + tokenUsuario)
 		         .accept(MediaType.APPLICATION_JSON) 
 		         .get(ClientResponse.class);
 

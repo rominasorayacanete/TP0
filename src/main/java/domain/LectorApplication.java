@@ -16,7 +16,7 @@ import view.LectorView;
 public class LectorApplication extends Application {
 
 	public static void main(String[] args) {
-		Gson gson = new Gson();
+		/*Gson gson = new Gson();
 		
 		List<Materia> muchasMaterias = new ArrayList<>();
 		
@@ -49,7 +49,7 @@ public class LectorApplication extends Application {
 		         .header("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIxMTEyMjIzMzMiLCJybmQiOiJ5SXNmZFIwN2lIR3BRRmVjYU9KT2VRPT0ifQ.9pVJGUXhrJPQ-TptNCt971l0h_1dWqWgMrHAWXJchho" )
 		         .accept(MediaType.APPLICATION_JSON).put(jsonInString);
 
-
+		*/
 		new LectorApplication().start();
 	}
 
