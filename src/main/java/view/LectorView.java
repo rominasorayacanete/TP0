@@ -9,6 +9,8 @@ import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.SimpleWindow;
 import org.uqbar.arena.windows.WindowOwner;
 
+import viewModels.LectorViewModel;
+
 public class LectorView extends SimpleWindow<LectorViewModel> {
 
 	public LectorView(WindowOwner parent) {
@@ -19,22 +21,22 @@ public class LectorView extends SimpleWindow<LectorViewModel> {
 	protected void addActions(Panel panelActions) {
 		new Button(panelActions) //
 		    .setCaption("Confirmar Token de ingreso") //
-		    .onClick(() -> {getModelObject().validarToken(); this.nuevoDialogo() ;});
+		    .onClick(() -> { getModelObject().validarToken(); this.nuevoDialogo(); });
 	}
-
 
 	  @Override
 	  public void createFormPanel(Panel mainPanel) {
 	    
 		  setTitle("Lector de Notas");
-		    mainPanel.setLayout(new VerticalLayout());
-		    new Label(mainPanel).setText("Â¡Bienvenido al Lector de notas!");
+		  mainPanel.setLayout(new VerticalLayout());
+		  
+		  new Label(mainPanel).setText("¡Bienvenido al Lector de notas!");
 		    
-		    new Label(mainPanel).setText("Ingrese su token");
+		  new Label(mainPanel).setText("Ingrese su token");
 		    
-		    new TextBox(mainPanel).setWidth(250).bindValueToProperty("tokenUsuario");
+		  new TextBox(mainPanel).setWidth(250).bindValueToProperty("tokenUsuario");
 					    
-		  }
+	  }
 
 	  public void nuevoDialogo() {
 		  this.openDialog(new MenuOpcionesView(this, this.getModelObject().getModelo()));

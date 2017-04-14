@@ -20,6 +20,7 @@ public class HistorialView extends Dialog<HistorialViewModel> {
 
 	@Override
 	public void createFormPanel(Panel mainPanel) {
+		
 		new Label(mainPanel).setText("Registro de notas");	
 		
 		Table<Fila> table = new Table<Fila>(mainPanel, Fila.class);
@@ -40,6 +41,7 @@ public class HistorialView extends Dialog<HistorialViewModel> {
 				.setTitle("Aprobado")
 				.setFixedSize(100)
 				.bindContentsToProperty("aprobado");
+			
 	}
 
 	@Override

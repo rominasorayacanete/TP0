@@ -19,7 +19,7 @@ public class  MenuOpcionesView extends Dialog<MenuOpcionesViewModel> {
 	}
 
 	@Override
-		protected void addActions(Panel panelActions) {	
+	protected void addActions(Panel panelActions) {	
 		
 			new Button(panelActions) //
 		    .setCaption("Consultar datos de asignaciones") //
@@ -33,10 +33,12 @@ public class  MenuOpcionesView extends Dialog<MenuOpcionesViewModel> {
 
 	@Override
 	public void createFormPanel(Panel mainPanel) {
+		
 	    setTitle("Menu");
 		mainPanel.setLayout(new VerticalLayout());	     
 		
-		new Label(mainPanel).setText("Elegí la acción a realizar");
+		new Label(mainPanel).setText("Elegi la accion a realizar");
+		
 	}
 
 	public void historialDialog() {

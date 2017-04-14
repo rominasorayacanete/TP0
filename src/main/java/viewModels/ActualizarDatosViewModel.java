@@ -14,13 +14,12 @@ public class ActualizarDatosViewModel {
 	private String verificadorActualizacion = "";
 
 	public void actualizarDatos() {
-			modelo.actualizarDatos(nuevoNombre, nuevoApellido, nuevoGitUser);
-			verificadorActualizacion = "Los datos se actualizaron correctamente";
+		modelo.actualizarDatos(nuevoNombre, nuevoApellido, nuevoGitUser);
+		verificadorActualizacion = "Los datos se actualizaron correctamente";
 	}
 
-
 	public String getNuevoApellido() {
-			return nuevoApellido;
+		return nuevoApellido;
 	}
 
 	public void setNuevoApellido(String nuevoApellido) {
@@ -54,7 +53,6 @@ public class ActualizarDatosViewModel {
 	public String getVerificadorActualizacion() {
 		return verificadorActualizacion;
 	}
-
 
 	public void setVerificadorActualizacion(String verificadorActualizacion) {
 		this.verificadorActualizacion = verificadorActualizacion;

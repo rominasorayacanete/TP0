@@ -17,5 +17,6 @@ public class MenuOpcionesViewModel {
 	public void setModelo(LectorModel model){
 		modelo = model;
 	}
+	
 }
 

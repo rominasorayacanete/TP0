@@ -1,4 +1,3 @@
-
 package domain;
 
 import org.uqbar.commons.utils.Observable;
@@ -16,7 +15,6 @@ public class Fila {
 		return ultimaNota;
 	}
 
-	
 	public void setUltimaNota(Nota nota) {
 		this.ultimaNota = nota;
 	}

@@ -11,8 +11,8 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 
-import exeptions.NoTieneNotasException;
-import exeptions.TokenInvalidoException;
+import exceptions.NoTieneNotasException;
+import exceptions.TokenInvalidoException;
 
 public class LectorModel {
 	
@@ -36,29 +36,36 @@ public class LectorModel {
 	}
 	
 	private Fila toFila(Materia materia) {
+		
 		Fila fila = new Fila();
 		fila.setTitulo(materia.getTitle());
-		try{
+		
+		try {
+			
 			fila.setUltimaNota(materia.ultimaNota());
 			fila.setAprobado(materia.aproboUltima());
-		} catch (NoTieneNotasException e){
-	
+			
+		} 
+		catch (NoTieneNotasException e){
+		
 		}
 		
 		return fila;
 
 	}
 
-
 	public void obtenerHistorial() {
 		historial = new Gson().fromJson(this.obtenerRecurso(token, "/assignments"), HistorialAcademico.class);
-	
 	}
 
-	public void obtenerDatos(String tokenUsuario) { 
+	public void obtenerDatos(String tokenUsuario) {
+		
 		estudiante = new Gson().fromJson(this.obtenerRecurso(tokenUsuario, ""), Estudiante.class);
+		
 		if( !pudoObtenerDatos() ) throw new TokenInvalidoException("Token Invalido, ingreselo nuevamente");
+		
 		token = tokenUsuario;
+		
 	}
 
 	public void actualizarDatos(String nuevoNombre, String nuevoApellido, String nuevoGitUser){
@@ -70,14 +77,13 @@ public class LectorModel {
 		String jsonInString = gson.toJson(estudiante);
 
 		ponerRecurso("", jsonInString, token);
+		
 	}
 
 	private void ponerRecurso(String recurso, String jsonInString, String tokenUsuario) {
 		recurso(recurso, tokenUsuario).put(jsonInString);
 	}
 	
-
-
 	public boolean pudoObtenerDatos() {
 		return estudiante.pudoInicializarse();
 	}

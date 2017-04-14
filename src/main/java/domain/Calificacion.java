@@ -11,7 +11,6 @@ public class Calificacion {
     private LocalDate created_at;
     private LocalDate updated_at;
 
-
     public Calificacion(Integer id, Nota value, LocalDate createdAt, LocalDate updatedAt) {
 
         this.id = id;
@@ -54,7 +53,3 @@ public class Calificacion {
 	}
 
 }
-
-
-
-

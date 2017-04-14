@@ -20,7 +20,6 @@ private LectorModel modelo;
 		modelo = model;
 	}
 
-
 	public List<Fila> getFilas(){ 
 		return modelo.obtenerFilas();
 	}

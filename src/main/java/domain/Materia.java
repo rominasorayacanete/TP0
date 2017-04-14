@@ -4,7 +4,7 @@ package domain;
 import java.util.Comparator;
 import java.util.List;
 
-import exeptions.NoTieneNotasException;
+import exceptions.NoTieneNotasException;
 import interfaces.Nota;
 
 public class Materia {
@@ -17,13 +17,6 @@ public class Materia {
     public Materia() {
     }
     
-    public Nota ultimaNota() {
-
-    	if( grades.isEmpty() ) throw new NoTieneNotasException("No hay notas!");
-    	return grades.stream().max(Comparator.comparing(c -> c.getUpdated_at())).get().getValue();
-    	
-    }
-    
     public Materia(Integer id, String title, String description, List<Calificacion> grado) {
         this.id = id;
         this.title = title;
@@ -31,6 +24,22 @@ public class Materia {
         this.grades = grado;
     }
 
+    public boolean aproboUltima() {
+		return this.ultimaNota().esNotaAprobada();
+	}    
+    
+    public Nota ultimaNota() {
+
+    	if( grades.isEmpty() ) throw new NoTieneNotasException("No hay notas!");
+    	
+    	return maximaNota(grades);
+    	
+    }
+    
+    private Nota maximaNota(List<Calificacion> calificaciones) {
+		return calificaciones.stream().max(Comparator.comparing(c -> c.getUpdated_at())).get().getValue();
+    } 
+    
     public Integer getId() {
         return id;
     }
@@ -62,12 +71,6 @@ public class Materia {
     public void setGrades(List<Calificacion> grado) {
         this.grades = grado;
     }
-
-
-
-    public boolean aproboUltima() {
-		return this.ultimaNota().esNotaAprobada();
-	}
 
 }
 

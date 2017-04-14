@@ -23,4 +23,5 @@ public class NotaNumerica implements Nota {
 	public String toString(){
 		return value.toString();
 	}
+	
 }

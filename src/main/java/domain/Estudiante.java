@@ -13,7 +13,6 @@ public class Estudiante {
 		this.setGithub_user(nuevoGitUser);
 	}
 
-
 	public Estudiante(String code, String first_name, String last_name, String github_user) {
 		super();
 		this.code = code;
@@ -59,4 +58,3 @@ public class Estudiante {
 	}
 	
 }
-
