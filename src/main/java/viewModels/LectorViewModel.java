@@ -1,6 +1,5 @@
 package viewModels;
 
-
 import org.uqbar.commons.utils.Observable;
 
 import domain.LectorModel;
@@ -9,8 +8,7 @@ import domain.LectorModel;
 public class LectorViewModel {
 	
 	private String tokenUsuario;
-	private LectorModel modelo = new LectorModel();
-	//private double notas; 
+	private LectorModel modelo = new LectorModel(); 
 	
 	public void validarToken() {
 		modelo.obtenerDatos(tokenUsuario);
@@ -23,14 +21,6 @@ public class LectorViewModel {
 	public void setTokenUsuario(String tokenUsuario) {
 		this.tokenUsuario = tokenUsuario;
 	}
-
-//	public double getNotas() {
-//		return notas;
-//	}
-//
-//	public void setNotas(double notas) {
-//		this.notas = notas;
-//	}
 
 	public LectorModel getModelo() {
 		return modelo;
