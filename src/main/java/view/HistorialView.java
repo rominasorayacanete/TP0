@@ -1,5 +1,6 @@
 package view;
 
+import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.tables.Column;
 import org.uqbar.arena.widgets.tables.Table;
@@ -8,6 +9,7 @@ import org.uqbar.arena.windows.WindowOwner;
 
 import domain.Fila;
 import domain.LectorModel;
+import viewModels.HistorialViewModel;
 
 public class HistorialView extends Dialog<HistorialViewModel> {
 
@@ -18,6 +20,8 @@ public class HistorialView extends Dialog<HistorialViewModel> {
 
 	@Override
 	public void createFormPanel(Panel mainPanel) {
+		new Label(mainPanel).setText("Registro de notas");	
+		
 		Table<Fila> table = new Table<Fila>(mainPanel, Fila.class);
 		table.setNumberVisibleRows(10);	
 		table.bindItemsToProperty("filas");

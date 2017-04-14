@@ -4,6 +4,9 @@ package domain;
 import java.util.Comparator;
 import java.util.List;
 
+import exeptions.NoTieneNotasException;
+import interfaces.Nota;
+
 public class Materia {
 
     private Integer id;
@@ -16,12 +19,9 @@ public class Materia {
     
     public Nota ultimaNota() {
 
+    	if( grades.isEmpty() ) throw new NoTieneNotasException("No hay notas!");
+    	return grades.stream().max(Comparator.comparing(c -> c.getUpdated_at())).get().getValue();
     	
-		//return grades.stream().max(Comparator.comparing(c -> c.getUpdated_at())).get().getValue();
-    	if( grades.isEmpty() ) throw new NoTieneNotasException("No Tenes Notas!");
-
-    	return grades.stream().max(Comparator.comparing(c -> c.getUpdated_at())).get().getValue();		
-
     }
     
     public Materia(Integer id, String title, String description, List<Calificacion> grado) {

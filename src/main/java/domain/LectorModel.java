@@ -9,6 +9,10 @@ import javax.ws.rs.core.MediaType;
 import com.google.gson.Gson;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.WebResource;
+
+import exeptions.NoTieneNotasException;
+import exeptions.TokenInvalidoException;
 
 public class LectorModel {
 	
@@ -17,23 +21,32 @@ public class LectorModel {
 	private String token;
 	
 	public List<Fila> obtenerFilas(){
-	
+		
 		this.obtenerHistorial();
 		List<Fila> filas = new ArrayList<Fila>();
 		
-		filas = historial.getAssignments().stream().map(this::toFila).collect(Collectors.toList());
+		filas = mapearAFilas(historial.getAssignments());
 		
 		return filas;
 		
+	}
+
+	private List<Fila> mapearAFilas(List<Materia> materias) {
+		return materias.stream().map(this::toFila).collect(Collectors.toList());
 	}
 	
 	private Fila toFila(Materia materia) {
 		Fila fila = new Fila();
 		fila.setTitulo(materia.getTitle());
-		fila.setUltimaNota(materia.ultimaNota());
-		fila.setAprobado(materia.aproboUltima());
+		try{
+			fila.setUltimaNota(materia.ultimaNota());
+			fila.setAprobado(materia.aproboUltima());
+		} catch (NoTieneNotasException e){
+	
+		}
 		
 		return fila;
+
 	}
 
 
@@ -52,19 +65,17 @@ public class LectorModel {
 		
 		Gson gson = new Gson();
 		
-		estudiante.setFirst_name(nuevoNombre);
-		estudiante.setLast_name(nuevoApellido);
-		estudiante.setGithub_user(nuevoGitUser);
+		estudiante.setDatos(nuevoNombre, nuevoApellido, nuevoGitUser);
 		
 		String jsonInString = gson.toJson(estudiante);
 
-		Client.create()
-		         .resource("http://notitas.herokuapp.com")
-		         .path("student")
-		         .header("Authorization", "Bearer " + token )
-		         .accept(MediaType.APPLICATION_JSON).put(jsonInString);
-}
+		ponerRecurso("", jsonInString, token);
+	}
 
+	private void ponerRecurso(String recurso, String jsonInString, String tokenUsuario) {
+		recurso(recurso, tokenUsuario).put(jsonInString);
+	}
+	
 
 
 	public boolean pudoObtenerDatos() {
@@ -73,15 +84,22 @@ public class LectorModel {
 			
 	private String obtenerRecurso(String tokenUsuario, String recurso) {
 		
-		ClientResponse response = Client.create()
-		         .resource("http://notitas.herokuapp.com")
-		         .path("student" + recurso)
-		         .header("Authorization", "Bearer " + tokenUsuario)
-		         .accept(MediaType.APPLICATION_JSON) 
-		         .get(ClientResponse.class);
+		ClientResponse response = getRecurso(recurso, tokenUsuario);
 
 		return response.getEntity(String.class);
 				
+	}
+	
+	private ClientResponse getRecurso(String recurso, String tokenUsuario) {
+		return recurso(recurso, tokenUsuario).get(ClientResponse.class);
+	}
+
+	private WebResource.Builder recurso(String recurso, String tokenUsuario) {
+			return Client.create()
+			         .resource("http://notitas.herokuapp.com")
+			         .path("student" + recurso)
+			         .header("Authorization", "Bearer " + tokenUsuario)
+			         .accept(MediaType.APPLICATION_JSON) ;
 	}
 	
 }

@@ -1,4 +1,4 @@
-package view;
+package viewModels;
 
 import org.uqbar.commons.utils.Observable;
 
@@ -11,9 +11,11 @@ public class ActualizarDatosViewModel {
 	private String nuevoNombre;
 	private String nuevoGitUser;
 	private LectorModel modelo;
+	private String verificadorActualizacion = "";
 
 	public void actualizarDatos() {
 			modelo.actualizarDatos(nuevoNombre, nuevoApellido, nuevoGitUser);
+			verificadorActualizacion = "Los datos se actualizaron correctamente";
 	}
 
 
@@ -48,4 +50,14 @@ public class ActualizarDatosViewModel {
 	public LectorModel getModelo(){
 		return modelo;
 	}
+	
+	public String getVerificadorActualizacion() {
+		return verificadorActualizacion;
+	}
+
+
+	public void setVerificadorActualizacion(String verificadorActualizacion) {
+		this.verificadorActualizacion = verificadorActualizacion;
+	}
+
 }

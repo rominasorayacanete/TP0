@@ -2,11 +2,13 @@ package view;
 
 import org.uqbar.arena.layout.VerticalLayout;
 import org.uqbar.arena.widgets.Button;
+import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.WindowOwner;
 
 import domain.LectorModel;
+import viewModels.MenuOpcionesViewModel;
 
 public class  MenuOpcionesView extends Dialog<MenuOpcionesViewModel> {
 
@@ -21,7 +23,7 @@ public class  MenuOpcionesView extends Dialog<MenuOpcionesViewModel> {
 		
 			new Button(panelActions) //
 		    .setCaption("Consultar datos de asignaciones") //
-		    .onClick(() -> {getModelObject().obtenerHistorial();historialDialog();});
+		    .onClick(() -> historialDialog());
 		
 			 new Button(panelActions) //
 			    .setCaption("Actualizar Datos") //
@@ -32,7 +34,9 @@ public class  MenuOpcionesView extends Dialog<MenuOpcionesViewModel> {
 	@Override
 	public void createFormPanel(Panel mainPanel) {
 	    setTitle("Menu");
-		mainPanel.setLayout(new VerticalLayout());	      
+		mainPanel.setLayout(new VerticalLayout());	     
+		
+		new Label(mainPanel).setText("Elegí la acción a realizar");
 	}
 
 	public void historialDialog() {

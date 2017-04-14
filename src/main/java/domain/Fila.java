@@ -3,6 +3,8 @@ package domain;
 
 import org.uqbar.commons.utils.Observable;
 
+import interfaces.Nota;
+
 @Observable
 public class Fila {
 	

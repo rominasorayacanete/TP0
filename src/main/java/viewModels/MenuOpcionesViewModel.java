@@ -1,15 +1,13 @@
-package view;
-
-import java.util.List;
+package viewModels;
 
 import org.uqbar.commons.utils.Observable;
 
-import domain.Fila;
 import domain.LectorModel;
 
 @Observable
-public class HistorialViewModel {
-	
+
+public class MenuOpcionesViewModel {
+
 	private LectorModel modelo; 
 	
 	public LectorModel getModelo(){
@@ -19,8 +17,5 @@ public class HistorialViewModel {
 	public void setModelo(LectorModel model){
 		modelo = model;
 	}
-
-	
-
-	
 }
+

@@ -2,6 +2,8 @@ package domain;
 
 import org.joda.time.LocalDate;
 
+import interfaces.Nota;
+
 public class Calificacion {
 
     private Integer id;

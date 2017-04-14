@@ -9,7 +9,7 @@ import domain.LectorModel;
 public class LectorViewModel {
 	private String tokenUsuario;
 	private LectorModel modelo = new LectorModel();
-	private double notas; /// NO SE SABE
+	private double notas; 
 	
 	
 	

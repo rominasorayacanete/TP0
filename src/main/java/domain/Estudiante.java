@@ -7,7 +7,12 @@ public class Estudiante {
 	private String last_name;
 	private String github_user;
 	
-	
+	public void setDatos(String nuevoNombre, String nuevoApellido, String nuevoGitUser){
+		this.setFirst_name(nuevoNombre);
+		this.setLast_name(nuevoApellido);
+		this.setGithub_user(nuevoGitUser);
+	}
+
 
 	public Estudiante(String code, String first_name, String last_name, String github_user) {
 		super();

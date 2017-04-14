@@ -1,6 +1,5 @@
 package view;
 
-import org.uqbar.arena.layout.VerticalLayout;
 import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
@@ -9,8 +8,7 @@ import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.WindowOwner;
 
 import domain.LectorModel;
-
-@SuppressWarnings("unused")
+import viewModels.ActualizarDatosViewModel;
 
 public class ActualizarDatosView extends Dialog<ActualizarDatosViewModel> {
 
@@ -33,6 +31,8 @@ public class ActualizarDatosView extends Dialog<ActualizarDatosViewModel> {
 		new Label(mainPanel).setText("Nuevo usuario de Github: ");
 
 		new TextBox(mainPanel).bindValueToProperty("nuevoGitUser");
+		
+		new Label(mainPanel).setWidth(200).bindValueToProperty("verificadorActualizacion");
 
 	}
 
