@@ -20,6 +20,14 @@ public class LectorModel {
 	private HistorialAcademico historial;
 	private String token;
 	
+	public String nombreDelEstudiante() {
+		return estudiante.getFirst_name();
+	}
+	
+	public Estudiante getEstudiante() {
+		return estudiante;
+	}
+	
 	public List<Fila> obtenerFilas(){
 		
 		this.obtenerHistorial();

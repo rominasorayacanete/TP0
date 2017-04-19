@@ -35,7 +35,7 @@ public class LectorView extends SimpleWindow<LectorViewModel> {
 		  new Label(mainPanel).setText("Ingrese su token");
 		    
 		  new TextBox(mainPanel).setWidth(250).bindValueToProperty("tokenUsuario");
-					    
+		  
 	  }
 
 	  public void nuevoDialogo() {

@@ -10,12 +10,12 @@ import org.uqbar.arena.windows.WindowOwner;
 import domain.LectorModel;
 import viewModels.MenuOpcionesViewModel;
 
-public class  MenuOpcionesView extends Dialog<MenuOpcionesViewModel> {
+public class MenuOpcionesView extends Dialog<MenuOpcionesViewModel> {
 
 	public MenuOpcionesView(WindowOwner parent, LectorModel model) {
 		
 		super(parent, new MenuOpcionesViewModel());
-		this.getModelObject().setModelo(model); 
+		this.getModelObject().setModelo(model);
 	}
 
 	@Override
@@ -36,6 +36,8 @@ public class  MenuOpcionesView extends Dialog<MenuOpcionesViewModel> {
 		
 	    setTitle("Menu");
 		mainPanel.setLayout(new VerticalLayout());	     
+		
+		new Label(mainPanel).bindValueToProperty("mensajeBienvenida");
 		
 		new Label(mainPanel).setText("Elegi la accion a realizar");
 		

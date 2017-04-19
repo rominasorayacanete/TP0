@@ -40,6 +40,7 @@ public class ActualizarDatosView extends Dialog<ActualizarDatosViewModel> {
 	public void addActions(Panel actionPanel){
 		new Button(actionPanel) //
 			.setCaption("Actualizar Datos") //
+			//.onClick(() -> getModelObject().actualizarDatos());
 			.onClick(() -> getModelObject().actualizarDatos());
 	}
 
