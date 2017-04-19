@@ -21,6 +21,8 @@ public class HistorialView extends Dialog<HistorialViewModel> {
 	@Override
 	public void createFormPanel(Panel mainPanel) {
 		
+		setTitle("Historial académico");
+		
 		new Label(mainPanel).setText("Registro de notas");	
 		
 		Table<Fila> table = new Table<Fila>(mainPanel, Fila.class);

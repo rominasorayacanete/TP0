@@ -3,6 +3,7 @@ package viewModels;
 import org.uqbar.commons.utils.Observable;
 
 import domain.LectorModel;
+import exceptions.DatosVaciosException;
 
 @Observable
 public class ActualizarDatosViewModel {
@@ -14,8 +15,19 @@ public class ActualizarDatosViewModel {
 	private String verificadorActualizacion = "";
 
 	public void actualizarDatos() {
+		
+		if( !sePuedeActualizar() ) throw new DatosVaciosException("Macho, no pusiste nada");
+		
 		modelo.actualizarDatos(nuevoNombre, nuevoApellido, nuevoGitUser);
 		verificadorActualizacion = "Los datos se actualizaron correctamente";
+	}
+	
+	public boolean sePuedeActualizar() {
+		return esValido(nuevoApellido) && esValido(nuevoNombre) && esValido(nuevoGitUser);
+	}
+		
+	private boolean esValido(String cadena) {
+		return cadena!=null && !cadena.isEmpty();
 	}
 
 	public String getNuevoApellido() {

@@ -1,5 +1,6 @@
 package view;
 
+import org.uqbar.arena.bindings.NotNullObservable;
 import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
@@ -19,6 +20,8 @@ public class ActualizarDatosView extends Dialog<ActualizarDatosViewModel> {
 
 	@Override
 	public void createFormPanel(Panel mainPanel) {
+		
+		setTitle("Actualice sus datos");
 
 		new Label(mainPanel).setText("Nuevo nombre: ");
 
@@ -37,10 +40,9 @@ public class ActualizarDatosView extends Dialog<ActualizarDatosViewModel> {
 	}
 
 	@Override
-	public void addActions(Panel actionPanel){
+	public void addActions(Panel actionPanel) {
 		new Button(actionPanel) //
 			.setCaption("Actualizar Datos") //
-			//.onClick(() -> getModelObject().actualizarDatos());
 			.onClick(() -> getModelObject().actualizarDatos());
 	}
 

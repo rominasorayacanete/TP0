@@ -34,12 +34,12 @@ public class MenuOpcionesView extends Dialog<MenuOpcionesViewModel> {
 	@Override
 	public void createFormPanel(Panel mainPanel) {
 		
-	    setTitle("Menu");
+	    setTitle("Menú de opciones");
 		mainPanel.setLayout(new VerticalLayout());	     
 		
 		new Label(mainPanel).bindValueToProperty("mensajeBienvenida");
 		
-		new Label(mainPanel).setText("Elegi la accion a realizar");
+		new Label(mainPanel).setText("Elegí la accion a realizar");
 		
 	}
 
