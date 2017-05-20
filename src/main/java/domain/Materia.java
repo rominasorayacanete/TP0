@@ -11,9 +11,8 @@ public class Materia {
 
     private Integer id;
     private String title;
-    private String description;
+    private String description; 
     private List<Calificacion> grades;
-
     public Materia() {
     }
     
@@ -25,19 +24,19 @@ public class Materia {
     }
 
     public boolean aproboUltima() {
-		return this.ultimaNota().esNotaAprobada();
+		return this.ultimaCalificacion().estaAprobada();
 	}    
     
-    public Nota ultimaNota() {
+    public String ultimaNota() {
 
     	if( grades.isEmpty() ) throw new NoTieneNotasException("No hay notas!");
     	
-    	return maximaNota(grades);
+    	return this.ultimaCalificacion().getValue();
     	
     }
     
-    private Nota maximaNota(List<Calificacion> calificaciones) {
-		return calificaciones.stream().max(Comparator.comparing(c -> c.getUpdated_at())).get().getValue();
+    private Calificacion ultimaCalificacion() {
+		return (Calificacion) this.grades.stream().max(Comparator.comparing(c -> c.getUpdated_at())).get();
     } 
     
     public Integer getId() {

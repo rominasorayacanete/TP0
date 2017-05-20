@@ -2,20 +2,19 @@ package domain;
 
 import org.uqbar.commons.utils.Observable;
 
-import interfaces.Nota;
 
 @Observable
 public class Fila {
 	
-	private Nota ultimaNota;
+	private String ultimaNota;
 	private boolean aprobado;
 	private String titulo;
 	
-	public Nota getUltimaNota() {
+	public String getUltimaNota() {
 		return ultimaNota;
 	}
 
-	public void setUltimaNota(Nota nota) {
+	public void setUltimaNota(String nota) {
 		this.ultimaNota = nota;
 	}
 	

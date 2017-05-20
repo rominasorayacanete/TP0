@@ -11,7 +11,7 @@ public class NotaNumerica implements Nota {
 	}
 	
 	@Override
-	public boolean esNotaAprobada() {
+	public boolean estaAprobada() {
 		return value >= 6;
 	}
 	

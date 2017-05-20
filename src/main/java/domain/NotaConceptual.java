@@ -11,7 +11,7 @@ public class NotaConceptual implements Nota {
 	}
 	
 	@Override
-	public boolean esNotaAprobada() {
+	public boolean estaAprobada() {
 		return value.charAt(0) == 'B';
 	}
 	

@@ -1,5 +1,6 @@
 package launcher;
 
+import org.joda.time.LocalDate;
 import org.uqbar.arena.Application;
 import org.uqbar.arena.windows.Window;
 
@@ -17,3 +18,4 @@ public class LectorApplication extends Application {
 	}
 	
 }
+

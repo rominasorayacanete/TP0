@@ -1,12 +1,17 @@
 package domain;
 
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.ws.rs.core.MediaType;
 
+import org.uqbar.commons.model.UserException;
+
 import com.google.gson.Gson;
+import com.google.gson.stream.JsonReader;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
@@ -28,7 +33,7 @@ public class LectorModel {
 		return estudiante;
 	}
 	
-	public List<Fila> obtenerFilas(){
+	public List<Fila> obtenerFilas() {
 		
 		this.obtenerHistorial();
 		List<Fila> filas = new ArrayList<Fila>();
@@ -63,9 +68,21 @@ public class LectorModel {
 	}
 
 	public void obtenerHistorial() {
+		/*	Prueba de traer las materias de json a objetos, para saber si anda el manejo de notas
+		 * 
+		 * try {
+			FileReader fr = new FileReader("ArchivoRober.json");
+			JsonReader reader = new JsonReader(fr);
+			historial = new Gson().fromJson(reader, HistorialAcademico.class);
+		} catch (IOException e) {
+			throw new UserException("No se encontro el archivo. Por favor, inserte una ruta valida");
+		}
+		*/
+		
 		historial = new Gson().fromJson(this.obtenerRecurso(token, "/assignments"), HistorialAcademico.class);
+		
 	}
-
+	
 	public void obtenerDatos(String tokenUsuario) {
 		
 		estudiante = new Gson().fromJson(this.obtenerRecurso(tokenUsuario, ""), Estudiante.class);
